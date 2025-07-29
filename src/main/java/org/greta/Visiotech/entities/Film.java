@@ -1,39 +1,59 @@
 package org.greta.Visiotech.entities;
 
-public class Product {
-    private Long id;
-    private String name;
-    private Double price;
+public class Film {
+    private Long filmId;
+    private String title;
+    private String synopsis;
+    private String date;
+    private String url;
 
-    public Product() {}
-    public Product(Long id, String name, Double price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
+    public Film() {}
+    public Film(Long filmId, String title, String synopsis, String date, String url) {
+        this.filmId = filmId;
+        this.title = title;
+        this.synopsis = synopsis;
+        this.date = date;
+        this.url = url;
     }
 
 
-    public Long getId() {
-        return id;
+
+    public Long getFilmId() {
+        return filmId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setFilmId(Long filmId) {
+        this.filmId = filmId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getSynopsis() {
+        return synopsis;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setSynopsis(String synopsis) {
+        this.synopsis = synopsis;
+    }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
