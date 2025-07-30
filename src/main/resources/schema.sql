@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
     email VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     role VARCHAR(50) DEFAULT 'USER'
-    );
+);
 
 CREATE TABLE IF NOT EXISTS movies (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS movie_genres (
     movie_id BIGINT,
     genre_id BIGINT,
     PRIMARY KEY (movie_id, genre_id),
-    FOREIGN KEY (movie_id) REFERENCES movies(id),
-    FOREIGN KEY (genre_id) REFERENCES genres(id)
+    FOREIGN KEY (movie_id) REFERENCES movies(id) ON DELETE CASCADE,
+    FOREIGN KEY (genre_id) REFERENCES genres(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS actors (
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS movie_actors (
     actor_id BIGINT,
     role_name VARCHAR(100),
     PRIMARY KEY (movie_id, actor_id),
-    FOREIGN KEY (movie_id) REFERENCES movies(id),
-    FOREIGN KEY (actor_id) REFERENCES actors(id)
+    FOREIGN KEY (movie_id) REFERENCES movies(id) ON DELETE CASCADE,
+    FOREIGN KEY (actor_id) REFERENCES actors(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS watch_history (
@@ -49,9 +49,9 @@ CREATE TABLE IF NOT EXISTS watch_history (
     user_id BIGINT,
     movie_id BIGINT,
     watched_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    progress_percent INT, -- 0 à 100
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (movie_id) REFERENCES movies(id)
+    progress_percent INT,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (movie_id) REFERENCES movies(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS favorites (
@@ -59,11 +59,6 @@ CREATE TABLE IF NOT EXISTS favorites (
     movie_id BIGINT,
     added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (user_id, movie_id),
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (movie_id) REFERENCES movies(id)
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (movie_id) REFERENCES movies(id) ON DELETE CASCADE
 );
-
-
-
-
-
